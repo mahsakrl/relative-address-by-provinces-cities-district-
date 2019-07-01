@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Select } from 'antd';
-import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import 'antd/dist/antd.css';
 
 import { changeProvinces, changeDistricts, changeCities } from './store/actions';
 const { Option } = Select;
@@ -10,8 +10,6 @@ function handleChange(value) {
   console.log(`selected ${value}`);
 }
 class App extends React.Component {
-
-
   handleCities = (pid) => {
     return () => {
       this.props.change_cities(pid)
@@ -50,9 +48,9 @@ class App extends React.Component {
   ) {
     return (
       <div>
-        <Select defaultValue="استان" style={{ width: 120 }} onChange={handleChange}>
+        <Select defaultValue="استان" style={{ width: 120, margin: 10 }} onChange={handleChange}>
           <Option onClick={this.handleCities(1)} value="تهران">تهران</Option>
-          <Option onClick={this.handleCities(15)} value="البرز">البرز</Option>
+          <Option onClick={this.handleCities(8)} value="البرز">البرز</Option>
           <Option onClick={this.handleCities(15)} value="اصفهان" >اصفهان</Option>
           <Option onClick={this.handleCities(16)} value="مازندران" >مازندران</Option>
           <Option onClick={this.handleCities(18)} value="فارس" >فارس</Option>
@@ -63,14 +61,14 @@ class App extends React.Component {
         </Select>
 
 
-        <Select defaultValue="شهر" style={{ width: 120 }}>
+        <Select defaultValue="شهر" style={{ width: 120, margin: 10 }}>
 
           {this.props.cities.map((value, index) => {
             return <Option value={value} onClick={this.handleDistricts(value)} key={index}>{value}</Option>
           })}
 
         </Select>
-        <Select defaultValue="منطقه" style={{ width: 120 }} >
+        <Select defaultValue="منطقه" style={{ width: 120, margin: 10 }} >
 
           {this.props.districts.map((value, index) => {
             return <Option value={value} key={index}>{value}</Option>
