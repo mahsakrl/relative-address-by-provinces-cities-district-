@@ -40,8 +40,6 @@ const rootReducer = (state = initialState, action) => {
 
       };
     case HAS_CHANGE_CITIES:
-        console.log(action)
-
       return {
         ...state,
         hasChangedCities: true,
@@ -49,6 +47,7 @@ const rootReducer = (state = initialState, action) => {
 
       };
     case HAS_CHANGE_DISTRICTS:
+      console.log(action)
       return {
         ...state,
         hasChangedDistricts: true,
