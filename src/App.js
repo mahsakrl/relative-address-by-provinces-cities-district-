@@ -1,12 +1,16 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { changeProvinces, changeDistricts, changeCities } from './store/actions';
+import { Select } from 'antd';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
+import { changeProvinces, changeDistricts, changeCities } from './store/actions';
+const { Option } = Select;
+
+function handleChange(value) {
+  console.log(`selected ${value}`);
+}
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { address: '' };
-  }
+
 
   handleCities = (pid) => {
     return () => {
@@ -45,55 +49,34 @@ class App extends React.Component {
 
   ) {
     return (
+      <div>
+        <Select defaultValue="استان" style={{ width: 120 }} onChange={handleChange}>
+          <Option onClick={this.handleCities(1)} value="تهران">تهران</Option>
+          <Option onClick={this.handleCities(15)} value="البرز">البرز</Option>
+          <Option onClick={this.handleCities(15)} value="اصفهان" >اصفهان</Option>
+          <Option onClick={this.handleCities(16)} value="مازندران" >مازندران</Option>
+          <Option onClick={this.handleCities(18)} value="فارس" >فارس</Option>
+          <Option onClick={this.handleCities(20)} value="خراسان" >خراسان</Option>
+          <Option onClick={this.handleCities(43)} value="کرمان" >کرمان</Option>
+          <Option onClick={this.handleCities(50)} value="مرکزی" >مرکزی</Option>
+          <Option onClick={this.handleCities(57)} value="قزوین" >قزوین</Option>
+        </Select>
 
-      <div style={{ flexDirection: 'row', display: 'flex' }} >
-        <div className="dropdown">
-          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            استان
-            </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div onClick={this.handleCities(1)} className="dropdown-item" >تهران</div>
-            <div onClick={this.handleCities(8)} className="dropdown-item" >البرز</div>
-            <div onClick={this.handleCities(15)} className="dropdown-item" >اصفهان</div>
-            <div onClick={this.handleCities(16)} className="dropdown-item" >مازندران</div>
-            <div onClick={this.handleCities(18)} className="dropdown-item" >فارس</div>
-            <div onClick={this.handleCities(20)} className="dropdown-item" >خراسان</div>
-            <div onClick={this.handleCities(43)} className="dropdown-item" >کرمان</div>
-            <div onClick={this.handleCities(50)} className="dropdown-item" >مرکزی</div>
-            <div onClick={this.handleCities(57)} className="dropdown-item" >قزوین</div>
-          </div>
-        </div>
-        <div className="dropdown">
-          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            شهر
-            </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-            <ul className="dropdown-item">
-              {this.props.cities.map((value, index) => {
-                return <li onClick={this.handleDistricts(value)} key={index}>{value}</li>
-              })}
-            </ul>
+        <Select defaultValue="شهر" style={{ width: 120 }}>
 
-          </div>
-        </div>
-        <div className="dropdown">
-          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            منطقه
-            </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <ul className="dropdown-item">
-              {this.props.districts.map((value, index) => {
-                return <li key={index}>{value}</li>
-              })}
-            </ul>
+          {this.props.cities.map((value, index) => {
+            return <Option value={value} onClick={this.handleDistricts(value)} key={index}>{value}</Option>
+          })}
 
-          </div>
-        </div>
+        </Select>
+        <Select defaultValue="منطقه" style={{ width: 120 }} >
 
+          {this.props.districts.map((value, index) => {
+            return <Option value={value} key={index}>{value}</Option>
+          })}
+        </Select>
       </div>
-
-
     );
   }
 }

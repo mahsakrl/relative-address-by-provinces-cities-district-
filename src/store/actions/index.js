@@ -39,7 +39,7 @@ export const changeDistricts = (parent_id_cit, parent_id_dis) => {
     axios.get(`https://api.tavanito.com/v1/provinces/${parent_id_cit}/cities/${parent_id_dis}/districts`).then(
       (res) => {
         for (var i = 0; i < res.data.data.length; i++) {
-          var data = res.data.data[i].title
+          var data = res.data.data[i].slug
 
           array3.push(data)
         }
