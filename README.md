@@ -1,9 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## screenshot
 
 In the project directory, you can run:
-screenshot [https://github.com/mahsakrl/relative-address-by-provinces-cities-district-/tree/master/src/assets/img/screenshot.png]
+<img align="left" width="100" height="100" src="./src/assets/screenshot.png">
 
 ### `npm start`
 
