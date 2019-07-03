@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## screenshot
 
 In the project directory, you can run:
-<img  src="./src/assets/screenshot.png">
+<img align="center" src="./src/assets/screenshot.png">
 
 ### `npm start`
 
